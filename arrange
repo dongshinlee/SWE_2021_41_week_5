@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cd ./files
+
+for file in *; do
+	first_letter=${file:0:1}
+
+	if [[ $first_letter == [a-z] ]]; then
+		mv "$file" "../$first_letter/"
+	elif [[ $first_letter == [A-Z] ]]; then
+		lower_letter=$(echo "$first_letter" | tr '[:upper:]' '[:lower:]')
+		mv "$file" "../$lower_letter/"
+	fi
+done
